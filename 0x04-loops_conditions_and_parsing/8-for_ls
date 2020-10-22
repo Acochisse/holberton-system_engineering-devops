@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# prints the files in CWD without the number and dash
+
+for filename in *;
+do
+	echo "$filename" | cut -d'-' -f2
+done

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# reads etc/passwd and pulls specified info
+
+while read LINE
+do
+	echo "$LINE" | cut -f1,3,6 -d':'
+done < /etc/passwd

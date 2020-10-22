@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# shows all the minutes in all hours 1-12
+
+x=0
+while [ $x -lt 13 ]
+do
+	echo "Hour: $x"
+	y=1
+	while [ $y -lt 60 ]
+	do
+		echo "$y"
+		((y++))
+	done
+	x=$(( x + 1 ))
+done
