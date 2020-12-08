@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# script what creates a new ssh key pair
+
+ssh-keygen -t rsa holberton -b 4096 -N betty

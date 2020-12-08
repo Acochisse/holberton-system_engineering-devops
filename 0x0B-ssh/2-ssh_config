@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#SSH client config file
+Host 34.74.102.184
+HostName 34.74.102.184
+IdentityFile ~/.ssh/holberton
