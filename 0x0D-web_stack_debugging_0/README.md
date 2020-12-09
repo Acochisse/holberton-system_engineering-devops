@@ -1,1 +1,1 @@
-265 - 0x0D-web_static_debugging_0
+This project is related to 265 - 0x0D-web_static_debugging_0
