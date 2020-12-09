@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# configures Nginx redirects
+
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Holberton School" | sudo tee /usr/share/nginx/html/index.html
+sudo service nginx start
+newlines="\\\a rewrite ^/redirect-me
+https://www.youtube.com/watch?=vQH2_TGUlwu4 permenent;"
+sudo sed -i "/#error_page 404 \/404.html;/ a\\$newlines"
+/etc/nginx/sites-available/default
+sudo service nginx restart
+sudo service nginx reload
