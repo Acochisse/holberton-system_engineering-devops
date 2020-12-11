@@ -1,6 +1,6 @@
 # creates a file via puppet
 
-file { '/tmp/holberton/0-create_a_file.pp':
+file { '/tmp/holberton':
   ensure  => 'file',
   path    => '/etc/holberton',
   mode    => '0744',
