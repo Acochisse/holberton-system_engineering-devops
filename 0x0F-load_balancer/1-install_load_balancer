@@ -1,10 +1,18 @@
 #!/usr/bin/env bash
-# configure HAproxy
+# installs nginx, manages: index.html, 404-error, redirect_me & custom headers
+# shellcheck disable=SC2154
 
-sudo apt-get -y update
-sudo apt-get -y upgrade
-sudo apt-get -y install haproxy
-sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
-sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.original
-sudo sed -i "$ a\listen webapp 0.0.0.0:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 210-web-01 142.44.167.228:80 check\n\tserver 210-web-02 144.217.246.195:80 check" /etc/haproxy/haproxy.cfg
-sudo service haproxy start
+sudo apt-get update
+sudo apt-get install -y nginx
+
+sudo mkdir -p /var/www/html
+sudo touch /var/www/html/index.html
+echo "Holberton School" | sudo tee /var/www/html/index.html
+sudo touch /var/www/html//my-404.html
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/my-404.html
+sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
+sudo sed -i '/listen 80 default_server/a error_page 404 /myreeses-404.html;' /etc/nginx/sites-available/default
+
+sudo sed -i '/listen 80 default_server;/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
+
+service nginx restart
