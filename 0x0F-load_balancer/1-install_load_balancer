@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
-# installs nginx, manages: index.html, 404-error, redirect_me & custom headers
-# shellcheck disable=SC2154
-
+# install haproxy and configure loadbalancing
 sudo apt-get update
-sudo apt-get install -y nginx
-
-sudo mkdir -p /var/www/html
-sudo touch /var/www/html/index.html
-echo "Holberton School" | sudo tee /var/www/html/index.html
-sudo touch /var/www/html//my-404.html
-echo "Ceci n'est pas une page" | sudo tee /var/www/html/my-404.html
-sudo sed -i '/listen 80 default_server/a rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' /etc/nginx/sites-available/default
-sudo sed -i '/listen 80 default_server/a error_page 404 /myreeses-404.html;' /etc/nginx/sites-available/default
-
-sudo sed -i '/listen 80 default_server;/a add_header X-Served-By $hostname;' /etc/nginx/sites-available/default
-
-service nginx restart
+sudo apt-get -y --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-1.8
+sudo apt-get -y install haproxy=1.8
+printf "\nfrontend haproxynode
+       bind *:80
+       mode http
+       default_backend backendnodes
+backendnodes
+       balance roundrobin
+       server 1819-web-01 34.74.102.184:80 check
+       server 1819-web-02 34.75.178.150:80 check
+" >> /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
