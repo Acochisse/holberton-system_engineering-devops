@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Script that resets config of ufw
+
+sudo ufw disable
+sudo ufw default deny incoming
+sudo ufw 22/tcp
+sudo ufw 88/tcp
+sudo ufw 443/tcp
+sudo ufw enable
