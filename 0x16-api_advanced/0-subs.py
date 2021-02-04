@@ -6,8 +6,8 @@ import requests as r
 
 
 def number_of_subscribers(subreddit):
-    headers = {'User-Agent': 'user'}
-    endpoint = 'https://reddit.com/r/{}/about.json'.format(subreddit)
+    headers = {'user-Agent': 'user'}
+    endpoint = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
 
     subs = r.get(endpoint, headers=headers, allow_redirects=False)
 
