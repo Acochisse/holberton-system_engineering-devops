@@ -7,9 +7,9 @@ Module that queries the Reddit API
 def top_ten(subreddit):
     """prints the titles of the first 10 hot posts listed"""
 
-    endpoint = "https://reddit.com/r/{}.json?sort=hot&libit=10"
-    headers = {'User-Agent': 'Blake'}
-    subs = r.get(endpoint.format(subreddit), headers=headers)
+    endpoint = "https://www.reddit.com/r/{}.json?sort=hot&libit=10".format(subreddit)
+    headers = {'user-Agent': 'user'}
+    subs = r.get(endpoint, headers=headers, allow_redirects=False)
 
     if subs.status_code != 200:
         print(None)
