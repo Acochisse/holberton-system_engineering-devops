@@ -19,7 +19,6 @@ if __name__ == "__main__":
     completed_tasks = 0
     total_tasks = 0
 
-
     todos = []
     for key in todo_list:
         todo = {}
@@ -32,4 +31,4 @@ if __name__ == "__main__":
         dictionary = {argv[1]: todos}
 
         with open('{}.json'.format(argv[1]), mode='w') as jsonfile:
-            json.dumps(dictionary, json)
+            json.dump(dictionary, jsonfile)
