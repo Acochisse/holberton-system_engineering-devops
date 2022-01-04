@@ -37,4 +37,4 @@ if __name__ == "__main__":
                      total_tasks))
 
         for key in done_tasks:
-            print("/t {}".format(key))
+            print("\t {}".format(key))
