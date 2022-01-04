@@ -20,9 +20,9 @@ if __name__ == "__main__":
     total_tasks = 0
 
     with open('{}.csv'.format(argv[1]), mode='w') as csvfile:
-              writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-              for key in todo_list:
-                  writer.writerow([
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        for key in todo_list:
+            writer.writerow([
                       key.get('userId'),
                       users_data.get('username'),
                       key.get('completed'),
