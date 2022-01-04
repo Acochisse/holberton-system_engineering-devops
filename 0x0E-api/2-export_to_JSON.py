@@ -27,7 +27,7 @@ if __name__ == "__main__":
         todo['username'] = key.get('username')
         todos.append(todo)
 
-        dictionary = {argv[1]: todos}
+    dictionary = {argv[1]: todos}
 
-        with open('{}.json'.format(argv[1]), mode='w') as jsonfile:
-            json.dump(dictionary, jsonfile)
+    with open('{}.json'.format(argv[1]), mode='w') as jsonfile:
+        json.dump(dictionary, jsonfile)
