@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 """ export api data to JSON """
-#!/usr/bin/python3
-"""export data in the CSV format
-"""
 import csv
 import json
 import requests
