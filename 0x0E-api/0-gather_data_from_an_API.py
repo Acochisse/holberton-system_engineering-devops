@@ -12,7 +12,7 @@ from sys import argv
 if __name__ == "__main__":
         users_data = requests.get(
                     'https://jsonplaceholder.typicode.com/users/{}'.
-                    format(argv[1]))
+                    format(int(argv[1])))
 
         todo_list = requests.get(
                     'https://jsonplaceholder.typicode.com/todos?userId={}'.
