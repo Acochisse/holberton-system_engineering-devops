@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 """ export api data to JSON """
+#!/usr/bin/python3
+"""export data in the CSV format
+"""
 import csv
 import json
 import requests
@@ -12,7 +15,7 @@ if __name__ == "__main__":
         format(argv[1])).json()
 
     todo_list = requests.get(
-        'https://jsonplaceholder.typicode.com/usersId={}'.
+        'https://jsonplaceholder.typicode.com/todos?userId={}'.
         format(argv[1])).json()
 
     employee_name = users_data['name']
@@ -24,10 +27,10 @@ if __name__ == "__main__":
         todo = {}
         todo['task'] = key.get('title')
         todo['completed'] = key.get('completed')
-        todo['username'] = key.get('username')
+        todo['username'] = users_data.get('username')
         todos.append(todo)
 
-    dictionary = {argv[1]: todos}
+        dictionary = {argv[1]: todos}
 
-    with open('{}.json'.format(argv[1]), mode='w') as jsonfile:
-        json.dump(dictionary, jsonfile)
+        with open('{}.json'.format(argv[1]), mode='w') as jsonfile:
+            json.dump(dictionary, jsonfile)
