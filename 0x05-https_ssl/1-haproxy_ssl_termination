@@ -40,7 +40,7 @@ frontend web-frontend
 	 default_backend web_backend
 
 frontend www-https
-	 bind *:443 ssl crt etc/letsencrypt/live/www.severskheavyindustries.tech/fullchain.pem
+	 bind *:443 ssl crt /etc/letsencrypt/live/www.severskheavyindustries.tech/fullchain.pem
 	 reqadd X-Forwarded-Proto:\ https
 	 acl letsencrypt-acl path_beg /.well-known/acme-challenge/
 	 use_backend letsencrypt-backend if letsencrypt-acl
